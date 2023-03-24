@@ -7,7 +7,7 @@ name: Deploy to Firebase Hosting on merge
     branches:
       - main
 env:
-  MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }}
+  MY_TEST_SECRET=${{ secrets.FIREBASE_SERVICE_ACCOUNT_PUP_LA }}
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
