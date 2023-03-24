@@ -1,6 +1,7 @@
 {
   "name": "pugplanner-frontend",
   "version": "0.1.0",
+  "homepage": "https://pup-la.web.app",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.4",
