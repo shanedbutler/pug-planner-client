@@ -12,6 +12,9 @@ import { initializeApp } from 'firebase/app';
 
 // Firebase configuration with Env variables
 
+const mySecret = process.env.MY_TEST_SECRET;
+console.log(mySecret);
+
 const firebaseConfig = {
    apiKey: process.env.REACT_APP_API_KEY,
    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
