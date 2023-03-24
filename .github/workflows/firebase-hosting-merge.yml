@@ -24,6 +24,7 @@ jobs:
         fail_on_empty: true
   build_and_deploy:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: create_env_file
     steps:
       - uses: actions/checkout@v3
