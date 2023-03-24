@@ -6,11 +6,11 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-name: Create env file
-  run: |
-    touch .env
-    echo MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }} >> .env
-    cat .env
+- name: Create env file
+    run: |
+      touch .env
+      echo MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }} >> .env
+      cat .env
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
