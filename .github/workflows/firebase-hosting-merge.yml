@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Write secrets to .env file
+        env: 
+          TEST_SECRET: ${{ secrets.MY_TEST_SECRET }}
+        run: |
+          echo "TEST_SECRET=${MY_TEST_SECRET}" >> .env
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

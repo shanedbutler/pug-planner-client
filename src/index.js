@@ -12,7 +12,7 @@ import { initializeApp } from 'firebase/app';
 
 // Firebase configuration with Env variables
 
-const mySecret = process.env.MY_TEST_SECRET;
+const mySecret = process.env.TEST_SECRET;
 console.log(mySecret);
 
 const firebaseConfig = {
