@@ -10,11 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 //import { initializeApp } from 'firebase-admin/app';
 import { initializeApp } from 'firebase/app';
 
-// Firebase configuration with Env variables
-
-const mySecret = process.env.TEST_SECRET;
-console.log(mySecret);
-
+// Firebase configuration with secrets from .env
 const firebaseConfig = {
    apiKey: process.env.REACT_APP_API_KEY,
    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -27,11 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase and export auth for use in AuthManager module
 const firebaseApp = initializeApp(firebaseConfig);
-
-// Firebase Admin SDK configuration
-// Initialize Firebase admin SDK
-// const firebaseApp = initializeApp();
-
 
 export const auth = getAuth(firebaseApp);
 const analytics = getAnalytics(firebaseApp);
