@@ -6,13 +6,9 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
+env:
+  MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }}
 jobs:
-  create_env_file:
-    steps:
-      - run: |
-        touch .env
-        echo MY_TEST_SECRET=${{ secrets.MY_TEST_SECRET }} >> .env
-        cat .env
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
