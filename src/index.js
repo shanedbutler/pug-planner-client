@@ -10,6 +10,8 @@ import { getAnalytics } from "firebase/analytics";
 //import { initializeApp } from 'firebase-admin/app';
 import { initializeApp } from 'firebase/app';
 
+console.log(process.env.REACT_APP_PROJECT_ID);
+console.log("deployed");
 // Firebase configuration with secrets from .env
 const firebaseConfig = {
    apiKey: process.env.REACT_APP_API_KEY,
