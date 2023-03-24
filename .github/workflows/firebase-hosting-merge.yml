@@ -6,18 +6,20 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-env:
-  MY_TEST_SECRET=${{ secrets.FIREBASE_SERVICE_ACCOUNT_PUP_LA }}
 jobs:
+  create_env_file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Make .env file
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
+        envkey_TEST_SECRET: ${{ secrets.MY_TEST_SECRET }}
+        file_name: .env
+        fail_on_empty: false
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Write secrets to .env file
-        env: 
-          TEST_SECRET: ${{ secrets.MY_TEST_SECRET }}
-        run: |
-          echo "TEST_SECRET=${MY_TEST_SECRET}" >> .env
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
