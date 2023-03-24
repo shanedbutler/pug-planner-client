@@ -13,7 +13,7 @@ jobs:
     - name: Make .env file
       uses: SpicyPizza/create-envfile@v1.3
       with:
-        envkey_REACT_APP_API_KEY: ${{ secrets.MY_TEST_SECRET }}
+        envkey_REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
         envkey_REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
         envkey_REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
         envkey_REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
