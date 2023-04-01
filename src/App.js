@@ -3,7 +3,6 @@ import { Login } from './auth/Login';
 import { Register } from './auth/Register';
 import { AppNav } from './nav/AppNav';
 import { ApplicationViews } from './views/ApplicationViews';
-import { Authorized } from './views/Authorized';
 import { onLoginStatusChange, me } from './managers/AuthManager';
 import { createContext, useEffect, useState } from 'react';
 import { getLocalUser } from './managers/UserManager';
