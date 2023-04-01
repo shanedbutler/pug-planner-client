@@ -1,18 +1,37 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { firebaseLogin } from '../managers/AuthManager';
+import { firebaseLogin, firebaseRecovery } from '../managers/AuthManager';
+import { ForgotPasswordModal } from '../modals/ForgotPasswordModal';
+
 
 export const Login = () => {
+   const [modalOpen, setModalOpen] = useState(false);
+
    const emailRef = useRef();
    const passwordRef = useRef();
    const navigate = useNavigate();
-
+   
    const handleLogin = (e) => {
       e.preventDefault();
       const loginUser = { email: emailRef.current.value, password: passwordRef.current.value };
       firebaseLogin(loginUser.email, loginUser.password)
-      .then(() => navigate("/"))
-      .catch(() => alert("Login Failed"));
+         .then(() => navigate("/"))
+         .catch(() => alert("Login Failed"));
+   };
+
+   const handleOpenRecoveryModal = (e) => {
+      e.preventDefault();
+      if (!emailRef.current.value) {
+         alert("Please enter your email address before requesting a password reset.");
+      }
+      else {
+         setModalOpen(true);
+      }
+   };
+
+   const handleRecovery = (e) => {
+      e.preventDefault();
+      firebaseRecovery(emailRef.current.value);
    };
 
    return (
@@ -92,8 +111,8 @@ export const Login = () => {
 
                      <div className="text-sm">
                         <a
-                           href="#"
                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                           onClick={handleOpenRecoveryModal}
                         >
                            Forgot your password?
                         </a>
@@ -126,6 +145,7 @@ export const Login = () => {
                </form>
             </div>
          </div>
+         <ForgotPasswordModal open={modalOpen} setOpen={setModalOpen} email={emailRef.current.value} handleRecovery={handleRecovery} />
       </>
    );
 };

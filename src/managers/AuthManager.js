@@ -87,6 +87,13 @@ export const firebaseLogin = async (email, pw) => {
 };
 
 /**
+ * Sends a password reset email to the given email address.
+ */
+export const firebaseRecovery = (email) => {
+  return auth.sendPasswordResetEmail(email);
+};
+
+/**
  * Signs out the current user from Firebase auth and removes object from local storage.
  */
 export const logout = () => {
